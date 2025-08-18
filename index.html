@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eJPT Companion - Notas y Guía de Examen</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="logo-container">
+        <img src="logo.png" alt="eJPT Companion Logo">
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>eJPT Companion 🛡️</h1>
+            <p>Tu asistente para el examen eJPTv2. Organiza tus notas y preguntas de forma eficiente.</p>
+        </div>
+        
+        <div id="machine-form-section">
+            <h2>Gestión de Máquinas</h2>
+            <form id="machine-form">
+                <input type="hidden" id="original-hostname">
+                <div class="input-group">
+                    <label for="machine-hostname">Hostname:</label>
+                    <input type="text" id="machine-hostname" placeholder="Ej. Web-Server" required>
+                </div>
+                <div class="input-group">
+                    <label for="machine-ip">Dirección IP:</label>
+                    <input type="text" id="machine-ip" placeholder="Ej. 10.10.10.50" required>
+                </div>
+                <div class="input-group">
+                    <label for="machine-ports">Puertos (separados por coma):</label>
+                    <input type="text" id="machine-ports" placeholder="Ej. 80, 443, 22">
+                </div>
+                <div class="input-group">
+                    <label for="machine-services">Servicios (separados por coma):</label>
+                    <input type="text" id="machine-services" placeholder="Ej. HTTP, HTTPS, SSH">
+                </div>
+                <button type="submit" id="save-machine-btn">Guardar Máquina</button>
+            </form>
+        </div>
+
+        <hr>
+        
+        <div id="dashboard-section">
+            <h2>Resumen del Entorno</h2>
+            <div id="machines-container" class="dashboard-grid">
+                </div>
+        </div>
+
+        <hr>
+
+        <div id="notes-section">
+            <h2>Notas de Exploración</h2>
+            <form id="note-form">
+                <div class="input-group">
+                    <label for="machine-select-notes">Máquina:</label>
+                    <select id="machine-select-notes" required>
+                        </select>
+                </div>
+                <div class="input-group">
+                    <label for="note-title">Título de la Nota:</label>
+                    <input type="text" id="note-title" placeholder="Ej. Escaneo Nmap" required>
+                </div>
+                <div class="input-group">
+                    <label for="note-content">Contenido:</label>
+                    <textarea id="note-content" rows="5" placeholder="Comandos ejecutados, vulnerabilidades, etc." required></textarea>
+                </div>
+                <button type="submit">Guardar Nota</button>
+            </form>
+            <div id="notes-container">
+                </div>
+        </div>
+
+        <hr>
+
+        <div id="questions-section">
+            <h2>Organizador de Preguntas</h2>
+            <form id="question-form">
+                <div class="input-group">
+                    <label for="machine-select-questions">Máquina Asociada:</label>
+                    <select id="machine-select-questions" required>
+                        </select>
+                </div>
+                <div class="input-group">
+                    <label for="question-number">Número de Pregunta:</label>
+                    <input type="number" id="question-number" min="1" max="35" required>
+                </div>
+                <div class="input-group">
+                    <label for="question-text">Texto de la Pregunta:</label>
+                    <textarea id="question-text" rows="3" required></textarea>
+                </div>
+                <button type="submit">Añadir Pregunta</button>
+            </form>
+            <div id="questions-container">
+                </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
