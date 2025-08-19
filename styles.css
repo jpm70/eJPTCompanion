@@ -127,3 +127,22 @@ button:hover {
 .machine-card strong {
     color: #c9d1d9;
 }
+
+/* Nuevos estilos para los botones de datos */
+.data-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.data-actions button {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hidden-input {
+    display: none;
+}
