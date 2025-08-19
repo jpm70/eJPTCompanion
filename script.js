@@ -16,12 +16,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const machineServicesInput = document.getElementById('machine-services');
     const saveMachineBtn = document.getElementById('save-machine-btn');
 
+    // Nuevos botones de importación/exportación
+    const exportBtn = document.getElementById('export-btn');
+    const importBtn = document.getElementById('import-btn');
+    const importFile = document.getElementById('import-file');
+
     // Estructura de datos en localStorage
     let data = JSON.parse(localStorage.getItem('ejptData')) || {
         machines: {},
         notes: [],
         questions: []
     };
+
+    // --- Funciones de exportación e importación ---
+    function exportData() {
+        const jsonData = JSON.stringify(data, null, 2);
+        const blob = new Blob([jsonData], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `ejpt_data_${new Date().toISOString().slice(0, 10)}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+
+    function importData(file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            try {
+                const importedData = JSON.parse(event.target.result);
+                if (importedData.machines && importedData.notes && importedData.questions) {
+                    data = importedData;
+                    saveData();
+                    alert('Datos importados con éxito.');
+                } else {
+                    alert('Error: El archivo no tiene el formato correcto.');
+                }
+            } catch (e) {
+                alert('Error: No se pudo leer el archivo JSON.');
+            }
+        };
+        reader.readAsText(file);
+    }
+
 
     // --- Funciones de renderizado y guardado ---
     function saveData() {
@@ -197,4 +236,16 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Carga inicial
     saveData();
+
+    // Eventos de los nuevos botones
+    exportBtn.addEventListener('click', exportData);
+    importBtn.addEventListener('click', () => {
+        importFile.click();
+    });
+    importFile.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            importData(file);
+        }
+    });
 });
