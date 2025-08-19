@@ -17,7 +17,19 @@
             <h1>eJPT Companion 🛡️</h1>
             <p>Tu asistente para el examen eJPTv2. Organiza tus notas y preguntas de forma eficiente.</p>
         </div>
-        
+
+        <div class="data-actions">
+            <button id="export-btn">
+                <span class="material-icons">download</span> Exportar Datos
+            </button>
+            <input type="file" id="import-file" accept=".json" class="hidden-input">
+            <button id="import-btn">
+                <span class="material-icons">upload_file</span> Importar Datos
+            </button>
+        </div>
+
+        <hr>
+
         <div id="machine-form-section">
             <h2>Gestión de Máquinas</h2>
             <form id="machine-form">
@@ -47,7 +59,7 @@
         <div id="dashboard-section">
             <h2>Resumen del Entorno</h2>
             <div id="machines-container" class="dashboard-grid">
-                </div>
+            </div>
         </div>
 
         <hr>
@@ -58,7 +70,7 @@
                 <div class="input-group">
                     <label for="machine-select-notes">Máquina:</label>
                     <select id="machine-select-notes" required>
-                        </select>
+                    </select>
                 </div>
                 <div class="input-group">
                     <label for="note-title">Título de la Nota:</label>
@@ -71,7 +83,7 @@
                 <button type="submit">Guardar Nota</button>
             </form>
             <div id="notes-container">
-                </div>
+            </div>
         </div>
 
         <hr>
@@ -82,7 +94,7 @@
                 <div class="input-group">
                     <label for="machine-select-questions">Máquina Asociada:</label>
                     <select id="machine-select-questions" required>
-                        </select>
+                    </select>
                 </div>
                 <div class="input-group">
                     <label for="question-number">Número de Pregunta:</label>
@@ -95,7 +107,7 @@
                 <button type="submit">Añadir Pregunta</button>
             </form>
             <div id="questions-container">
-                </div>
+            </div>
         </div>
     </div>
     
